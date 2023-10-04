@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const Product = require("./models/productsModel");
 
 // Middleware
 app.use(express.json());
@@ -36,6 +37,17 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.send("About Nabil");
+});
+
+// Post Product
+app.post("/product", async(req, res) => {
+  try {
+    const product = await Product.create(req.body)
+    res.status(200).json(product)
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({ message: error.message });
+  }
 });
 
 // Page 404
