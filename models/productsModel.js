@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const ProductSchema = mongoose.Schema(
      {
-          name: {
+          nama: {
                type: String,
                required: [true,"Nama harus diisi"]
           },
           stock: {
                type: Number,
-               required: [true,"Nama harus diisi"],
+               required: [true,"Stock harus diisi"],
                default: 0
           },
           harga: {
