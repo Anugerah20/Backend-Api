@@ -5,6 +5,7 @@ const Product = require("./models/productsModel");
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 require("dotenv").config();
 
 const db_username = process.env.DB_USERNAME;
@@ -36,16 +37,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.send("About Nabil");
+  res.send("About Us");
 });
 
-// Post Product
-app.post("/product", async(req, res) => {
+// Get All Products
+app.get("/products", async(req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products)
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Post Products
+app.post("/products", async(req, res) => {
   try {
     const product = await Product.create(req.body)
     res.status(200).json(product)
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
     res.status(500).json({ message: error.message });
   }
 });
