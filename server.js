@@ -40,6 +40,18 @@ app.get("/about", (req, res) => {
   res.send("About Us");
 });
 
+// Get Producy By ID
+app.get("/products/:id", async(req, res) => {
+  try {
+    const {id} = req.params;
+    const products = await Product.findById(id);
+    res.status(200).json(products);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Get All Products
 app.get("/products", async(req, res) => {
   try {
