@@ -40,6 +40,24 @@ app.get("/about", (req, res) => {
   res.send("About Us");
 });
 
+// Edit Product
+app.put("/products/:id", async(req, res) => {
+  try {
+    const {id} = req.params;
+    const products = await Product.findByIdAndUpdate(id, req.body);
+
+    if(!products) {
+      return res.status(404).json({message: `Cannot find any product with ID ${id}`})
+    }
+
+    const updatedProduct = await Product.findById(id);
+    res.status(200).json(updatedProduct);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Get Producy By ID
 app.get("/products/:id", async(req, res) => {
   try {
