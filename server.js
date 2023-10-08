@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 const Product = require("./models/productsModel");
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 require("dotenv").config();
+app.use(cors());
 
 const db_username = process.env.DB_USERNAME;
 const db_password = process.env.DB_PASSWORD;
