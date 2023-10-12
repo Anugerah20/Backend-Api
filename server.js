@@ -10,6 +10,7 @@ app.use(express.urlencoded({extended: false}));
 require("dotenv").config();
 app.use(cors());
 
+const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
 
 // Mongodb connect
@@ -18,8 +19,8 @@ mongoose
   .connect(MONGO_URL)
   .then(() => {
     console.log("Connect Mongodb");
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
