@@ -10,19 +10,12 @@ app.use(express.urlencoded({extended: false}));
 require("dotenv").config();
 app.use(cors());
 
-const db_username = process.env.DB_USERNAME;
-const db_password = process.env.DB_PASSWORD;
+const MONGO_URL = process.env.MONGO_URL;
 
 // Mongodb connect
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(
-    `mongodb+srv://${db_username}:${db_password}@nodeapi.twsmmh3.mongodb.net/?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(MONGO_URL)
   .then(() => {
     console.log("Connect Mongodb");
     app.listen(3000, () => {
