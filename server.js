@@ -35,11 +35,7 @@ mongoose
 
 // Route
 app.get("/", (req, res) => {
-  res.send("Home");
-});
-
-app.get("/about", (req, res) => {
-  res.send("About Us");
+  res.send("Backend API");
 });
 
 // Edit Product
