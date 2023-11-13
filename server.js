@@ -6,10 +6,11 @@ const productRoute = require("./routes/productRoute")
 
 // Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 require("dotenv").config();
 app.use(cors());
 
+// Port
 const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
 
