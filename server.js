@@ -19,7 +19,6 @@ mongoose.set("strictQuery", false);
 mongoose
   .connect(MONGO_URL)
   .then(() => {
-    console.log("Connect Mongodb");
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
