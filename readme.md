@@ -1,7 +1,7 @@
 
 # CRUD BE API
 
-Project ini untuk mengimplementasikan hasil belajar backend api menggunakan express dan database no sql (MONGGO DB).
+Project ini untuk mengimplementasikan hasil belajar backend api menggunakan express dan database no sql (MongoDB).
 
 
 ## Terdapat beberapa API
